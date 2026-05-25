@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Морський Бій — Тактичний Симулятор</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="app-container">
+
+  <section id="menu-screen" class="screen active">
+    <header class="menu-header">
+      <h1>МОРСЬКИЙ БІЙ</h1>
+      <p class="subtitle">Тактичний мережевий симулятор</p>
+    </header>
+
+    <div class="menu-card">
+      <div class="action-group">
+        <button class="btn btn-primary" onclick="startBotGame()">Грати проти ШІ</button>
+        <button class="btn btn-outline" onclick="showOnlineSetup()">Мережева гра</button>
+      </div>
+
+      <footer class="stats-panel">
+        <span class="stats-label">Синхронізація з БД:</span>
+        <span id="stats-display" class="stats-value">Завантаження...</span>
+      </footer>
+    </div>
+  </section>
+
+  <section id="online-screen" class="screen">
+    <h2>Мережевий режим</h2>
+    <p class="screen-desc">Створіть нову бойову зону або підключіться до існуючої</p>
+
+    <div class="lobby-grid">
+      <div class="lobby-card">
+        <h3>Створити лобі</h3>
+        <p>Надішліть цей унікальний маркер супротивнику для підключення:</p>
+        <div class="token-display" id="generated-room-id">XXXX</div>
+        <button class="btn btn-primary" onclick="createAndConnectRoom()">Ініціалізувати</button>
+      </div>
+
+      <div class="lobby-card">
+        <h3>Приєднатися</h3>
+        <p>Введіть ідентифікатор лобі, створений вашим супротивником:</p>
+        <input type="text" id="room-input-code" placeholder="Наприклад: room-a4f2" autocomplete="off">
+        <button class="btn btn-outline" onclick="connectToExistingRoom()">Увійти в бій</button>
+      </div>
+    </div>
+
+    <button class="btn btn-link" onclick="showScreen('menu-screen')">Повернутися в меню</button>
+  </section>
+
+  <section id="game-screen" class="screen">
+    <header class="game-header">
+      <h2 id="game-mode-title">Бойова операція</h2>
+      <div id="status-text" class="status-badge">Завантаження систем...</div>
+    </header>
+
+    <div id="placement-controls" class="placement-box">
+      <p id="placement-instruction">Розставте 4-палубний корабель</p>
+      <div class="placement-buttons">
+        <button id="dir-h-btn" class="btn btn-placement active" onclick="setPlacementDirection('H')">Горизонтально</button>
+        <button id="dir-v-btn" class="btn btn-placement" onclick="setPlacementDirection('V')">Вертикально</button>
+      </div>
+      <button id="auto-place-btn" class="btn btn-link" onclick="autoPlaceRemaining()">Розставити випадково</button>
+    </div>
+
+    <div class="battlefield">
+      <div class="board-wrapper">
+        <span class="board-title">Ваш флот</span>
+        <div class="grid" id="player-board"></div>
+      </div>
+
+      <div class="board-wrapper" id="enemy-board-wrapper">
+        <span class="board-title">Радар супротивника</span>
+        <div class="grid" id="enemy-board"></div>
+      </div>
+    </div>
+
+    <footer class="game-footer">
+      <button class="btn btn-danger" onclick="exitToMenu()">Капітулювати</button>
+    </footer>
+  </section>
+
+</main>
+
+<script src="Progect.js"></script>
+</body>
+</html>
