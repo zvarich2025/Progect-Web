@@ -1,0 +1,379 @@
+/* МІНІМАЛІСТИЧНЕ СКИДАННЯ СТИЛІВ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-main: #0a0d14;
+    --bg-surface: #111520;
+    --bg-input: #171d2c;
+    --border-color: #222b3e;
+    --text-main: #f1f5f9;
+    --text-muted: #64748b;
+
+    --primary: #0284c7;
+    --primary-hover: #0369a1;
+    --success: #10b981;
+    --danger: #ef4444;
+    --miss: #334155;
+
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1024px;
+    padding: 20px;
+}
+
+.screen {
+    display: none;
+    animation: pageFadeIn 0.3s ease;
+}
+.screen.active {
+    display: block;
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.screen-desc {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.menu-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    max-width: 440px;
+    margin: 0 auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.lobby-grid {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.lobby-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    width: 300px;
+    text-align: left;
+}
+
+.lobby-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.lobby-card p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #fff;
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+.btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: var(--text-muted);
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    width: auto;
+}
+.btn-danger:hover {
+    background-color: var(--danger);
+    color: #fff;
+    border-color: var(--danger);
+}
+
+.btn-link {
+    background: none;
+    color: var(--text-muted);
+    width: auto;
+    text-transform: none;
+    font-size: 0.9rem;
+}
+.btn-link:hover {
+    color: var(--text-main);
+}
+
+.action-group .btn {
+    margin-bottom: 12px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 16px;
+    transition: var(--transition);
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.token-display {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #eab308;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+}
+
+.stats-panel {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+}
+.stats-label { color: var(--text-muted); }
+.stats-value { color: var(--success); font-weight: 600; }
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: 10px;
+}
+
+.battlefield {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.board-wrapper {
+    text-align: left;
+}
+.board-title {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 30px repeat(10, 36px);
+    grid-template-rows: 30px repeat(10, 36px);
+    gap: 1px;
+    background-color: var(--border-color);
+    padding: 1px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.cell {
+    background-color: var(--bg-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    user-select: none;
+    transition: background-color 0.1s ease;
+}
+
+.label {
+    background-color: var(--bg-surface);
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.game-cell { cursor: pointer; }
+.player-board .game-cell { cursor: default; }
+
+/* НОВІ СТИЛІ ДЛЯ СТАДІЇ РОЗСТАВЛЕННЯ */
+.placement-box {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.placement-box p {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.placement-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.btn-placement {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+.btn-placement.active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+/* Інтерактивний ховер під час розставлення на власному полі */
+.player-board.placing-mode .game-cell:hover {
+    background-color: rgba(2, 132, 199, 0.2);
+}
+
+/* Невалідні клітинки або зони навколо кораблів при наведенні (опціонально) */
+.player-board.placing-mode .game-cell.invalid-place:hover {
+    background-color: rgba(239, 68, 68, 0.2);
+}
+
+.cell.ship {
+    background-color: #1e293b;
+    border: 1px solid rgba(16, 185, 129, 0.5);
+}
+
+.cell.miss {
+    background-color: var(--bg-main);
+}
+.cell.miss::after {
+    content: "";
+    width: 4px;
+    height: 4px;
+    background-color: var(--text-muted);
+    border-radius: 50%;
+}
+
+.cell.hit {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+.cell.hit::after {
+    content: "×";
+    font-size: 1.2rem;
+}
+
+.cell.sunk {
+    background-color: var(--danger);
+    color: #fff;
+}
+.cell.sunk::after {
+    content: "×";
+    font-size: 1.2rem;
+}
+
+.enemy-board .game-cell:not(.hit):not(.miss):not(.sunk):hover {
+    background-color: var(--bg-input);
+}
+
+.game-footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+@keyframes pageFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
